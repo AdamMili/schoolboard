@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\Student;
+
 require_once 'vendor/autoload.php';
 
-use App\Classes\Index;
+require_once 'database.php';
 
-$index = new Index();
+$student = Student::find(1);
+
+echo $student->board->type;
