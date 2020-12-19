@@ -9,4 +9,12 @@ interface Formatter {
      * @return mixed
      */
     public function formatData($data);
+
+
+    /**
+     * Add header to response.
+     *
+     * @return mixed
+     */
+    public function addHeader();
 }

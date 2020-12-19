@@ -2,6 +2,7 @@
 
 use App\Interfaces\Format\Formatter;
 use SimpleXMLElement;
+use Spatie\ArrayToXml\ArrayToXml;
 
 class XmlFormatter implements Formatter {
 
@@ -13,11 +14,19 @@ class XmlFormatter implements Formatter {
      */
     public function formatData($data)
     {
-        $xmlData = new SimpleXMLElement('<?xml version="1.0"?><data></data>');
+        $gradeXml = [];
+        foreach ($data['student']['grades'] as $grade) {
+            $gradeXml['grade'][] = $grade;
+        }
 
-        $this->convertToXML($data, $xmlData);
+        $data['student']['grades'] = $gradeXml;
 
-        return $xmlData->asXML();
+        return ArrayToXml::convert($data, 'student_info');
+    }
+
+    public function addHeader()
+    {
+        header('Content-Type: text/xml; charset=utf-8');
     }
 
     /**

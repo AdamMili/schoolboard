@@ -14,4 +14,8 @@ class JsonFormatter implements Formatter {
     {
         return json_encode($data);
     }
+
+    public function addHeader() {
+        header('Content-Type: application/json; charset=utf-8');
+    }
 }
