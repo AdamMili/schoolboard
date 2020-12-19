@@ -1,7 +1,9 @@
 {
     "name": "adam/schoolboard",
     "description": "Schoolboard",
-    "require": {},
+    "require": {
+        "illuminate/database": "^5.5"
+    },
     "autoload": {
         "psr-4": {
             "App\\" : "src/"
